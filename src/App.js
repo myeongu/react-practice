@@ -1,9 +1,15 @@
+import { Button } from 'antd';
 import 'App.css';
 
 function App() {
   return (
     <div>
-      hello react.
+      <button>
+        hello react.
+      </button>
+      <Button type="primary" onClick={ () => console.log("hello!") }>
+        Hello, Antd.
+      </Button>
     </div>
   );
 }
