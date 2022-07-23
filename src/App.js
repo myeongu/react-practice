@@ -2,10 +2,23 @@ import React from 'react';
 import { Button } from 'antd';
 import 'App.css';
 
+const actions = {
+  init(initialValue) {
+    return { value: initialValue }
+  },
+  increment(prevState) {
+    return { value: prevState.value + 1 }
+  },
+  decrement(prevState) {
+    return { value: prevState.value - 1 }
+  }
+}
+
 class Component1 extends React.Component {
-  state = {
-    value: this.props.initialValue,
-  };
+  state = actions.init(this.props.initialValue)
+  // state = {
+  //   value: this.props.initialValue,
+  // };
   
   onClick = () => {
     const { value } = this.state
@@ -17,7 +30,8 @@ class Component1 extends React.Component {
     return (
       <div>
         Counter: { value }
-        <Button onClick={this.onClick}>+1</Button>
+        <Button onClick={() => this.setState(actions.increment)}>+1</Button>
+        <Button onClick={() => this.setState(actions.decrement)}>-1</Button>
       </div> // jsx 문법
     )
   }
