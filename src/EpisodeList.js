@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios'
+import { Card, Col, Row } from "antd";
 import episodeApi from "EpisodeApi"
 
 class EpisodeDetail extends React.Component {
@@ -10,10 +11,11 @@ class EpisodeDetail extends React.Component {
     render() {
         const { episode: { id, name, image : { medium : thumbUrl } }} = this.state;
         return (
-            <div>
-                {id} : {name}
-                <img src={thumbUrl} alt={name} />
-            </div>
+            <Card 
+                style={{width: 240}}
+                cover={<img alt={name} src={thumbUrl} />}>
+                    <Card.Meta title={name}/>
+            </Card>
         )
     }
 }
@@ -49,11 +51,15 @@ class EpisodeList extends React.Component {
         return (
             <div>
                 <h1>Episode List</h1>
-                {
-                    episodeList.map(episode => 
-                        <EpisodeDetail episode={episode} />
-                    )
-                }
+                <Row>
+                    {
+                        episodeList.map(episode => 
+                            <Col span={8}>
+                                <EpisodeDetail episode={episode} />
+                            </Col>
+                        )
+                    }
+                </Row>
             </div>
         )
     }
