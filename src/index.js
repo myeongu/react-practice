@@ -5,12 +5,13 @@ import App from './App';
 import App2 from 'App2';
 import reportWebVitals from './reportWebVitals';
 import TodoList from 'TodoList';
+import EpisodeList from "EpisodeList";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App2 />
-    {/* <TodoList /> */}
+    {/* <App2 /> */}
+    <EpisodeList />
   </React.StrictMode>
 );
 
